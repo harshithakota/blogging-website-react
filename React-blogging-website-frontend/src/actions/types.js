@@ -1,0 +1,6 @@
+export const CREATE_BLOG = "CREATE_BLOG";
+export const RETRIEVE_BLOGS = "RETRIEVE_BLOGS";
+export const UPDATE_BLOG = "UPDATE_BLOG";
+export const DELETE_BLOG = "DELETE_BLOG";
+export const DELETE_ALL_BLOGS = "DELETE_ALL_BLOGS";
+export const RETRIEVE_BLOGS_BY_ID = "RETRIEVE_BLOGS_BY_ID";

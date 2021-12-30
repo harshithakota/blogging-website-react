@@ -1,0 +1,33 @@
+
+.article {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.article-body {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Open Sans,Helevetica,Arial,sans-serif;
+  font-size:19px;
+}
+
+.article-title {
+  border-bottom: 3px solid #6ba2aa;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.cell {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 38px;
+  margin: 0.67em 0;
+}
+
+article {
+  display: block;
+}

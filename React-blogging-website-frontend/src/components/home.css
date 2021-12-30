@@ -1,0 +1,60 @@
+.home,
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+
+.home{
+  background-color: #C4E2FF;
+  height:500px;
+}
+
+.line-home{
+width: 100%;
+border-bottom: 1px solid black;
+position: absolute;
+}
+
+.main{
+  font-size:60px;
+  font-family:gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+  padding-top:50px;
+  margin-left:30px;
+}
+
+.sub{
+  padding-top:17px;
+  font-family:sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left:30px;
+  font-size:18px;
+}
+
+.button-home{
+  background: #fff;
+  border-color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1px 2px;
+  cursor: pointer;
+  border-radius: 18px;
+  font-size:16px;
+  font-family:sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.write{
+  padding-top:25px;
+  margin-left:35px;
+}
+
+.front{
+  display:flex;
+}
+
+.image{
+  padding-top:100px;
+  padding-left:150px;
+}

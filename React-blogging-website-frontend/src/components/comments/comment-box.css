@@ -1,0 +1,11 @@
+.row.comments-container {
+    min-height: 300px;
+    background-color: #C4E2FF;
+}
+
+@media screen and (max-width: 800px) {
+    .row.comments-container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
