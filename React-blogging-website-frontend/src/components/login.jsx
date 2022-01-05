@@ -3,7 +3,7 @@ import "./login.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-const Login = ({ setLoginUser}) => {
+const Login = ({updateUser}) => {
 
     const history = useNavigate()
 
@@ -24,7 +24,8 @@ const Login = ({ setLoginUser}) => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
             alert(res.data.message)
-            setLoginUser(res.data.user)
+            updateUser(res.data.user)
+            // sessionStorage.setItem('UserName', res.data.user.name);
             history("/")
         })
     }
@@ -34,9 +35,9 @@ const Login = ({ setLoginUser}) => {
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>
-            <div className="button" onClick={login}>Login</div>
+            <div className="buton" onClick={login}>Login</div>
             <div>or</div>
-            <div className="button" onClick={() => history.push("/register")}>Register</div>
+            <div className="buton" onClick={() => history("/register")}>Register</div>
         </div>
     )
 }

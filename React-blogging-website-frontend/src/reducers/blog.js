@@ -2,6 +2,7 @@ import {
   CREATE_BLOG,
   RETRIEVE_BLOGS,
   RETRIEVE_BLOGS_BY_ID,
+  RETRIEVE_BLOGS_BY_TAG,
   UPDATE_BLOG,
   DELETE_BLOG,
   DELETE_ALL_BLOGS,
@@ -20,8 +21,14 @@ function blogReducer(blogs = initialState, action) {
       return payload;
 
     case RETRIEVE_BLOGS_BY_ID:
-    console.log(payload);
-        return blogs.filter(({ id }) => id === payload.id);
+      return payload;
+    //console.log(payload);
+  //      return blogs.filter(({ id }) => id === payload.id);
+
+
+  case RETRIEVE_BLOGS_BY_TAG:
+    return payload;
+
 
     case UPDATE_BLOG:
       return blogs.map((blog) => {

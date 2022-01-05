@@ -16,7 +16,7 @@ function Home(){
           It's easy to post your knowledge on any topic and connect<br/> with millions of readers.
           </div>
 
-          <div className="write"><button className="button-home"><Link to="Write-article" style={{color:'inherit'}}>Start Writing</Link></button></div>
+          <div className="write"><button className="button-home"><Link to="write" style={{color:'inherit'}}>Start Writing</Link></button></div>
         </div>
         <div className="image"><img src="images/home-image.png" alt="" /></div>
       </div>

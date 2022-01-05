@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './blog-detail.css';
 import CommentBox from "./comments/comment-box.jsx"
 import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { findBlogsById } from "../actions/blog";
+import { useDispatch, useSelector } from "react-redux";
+import BlogDataService from "../services/BlogService";
 
 function BlogDetail(props) {
 const params = useParams();
-console.log(params.id);
 
-const blog = props.blogs.filter( blog => blog.id == params.id );
-console.log(blog[0]);
+const dispatch = useDispatch();
+
+const [blogdetail, setBlogData] = useState([]);
+
+useEffect(() => {
+
+  BlogDataService.get(params.id)
+      .then(response => {
+        setBlogData(response.data[0]);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
+}, []);
+
     return (
         <div>
           <div className="cell">
             <article className="article">
-              <h1 className="article-title">{blog[0].title}</h1>
+              <h1 className="article-title">{blogdetail.title}</h1>
               <div className="article-body">
                 <p>
-                  {blog[0].description}
+                  {blogdetail.description}
                 </p>
               </div>
             </article>
@@ -30,10 +43,4 @@ console.log(blog[0]);
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    blogs: state.blog,
-  };
-};
-
-export default connect(mapStateToProps, { findBlogsById })(BlogDetail);
+export default BlogDetail;

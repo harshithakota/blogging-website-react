@@ -4,7 +4,8 @@ import {
   UPDATE_BLOG,
   DELETE_BLOG,
   DELETE_ALL_BLOGS,
-  RETRIEVE_BLOGS_BY_ID
+  RETRIEVE_BLOGS_BY_ID,
+  RETRIEVE_BLOGS_BY_TAG
 } from "./types";
 
 import BlogDataService from "../services/BlogService";
@@ -13,7 +14,7 @@ export const createBlog = (title, description) => async (dispatch) => {
   try {
   //  const res = await BlogDataService.create({ title, description });
   const res = {
-    'id': Math.floor(Math.random()*100),
+    //'id': Math.floor(Math.random()*100),
     'title':title,
     'description':description
   };
@@ -99,6 +100,8 @@ export const findBlogsByTitle = (title) => async (dispatch) => {
 };
   export const findBlogsById = (id) => async (dispatch) => {
     try {
+
+      const res = await BlogDataService.get(id);
       dispatch({
         type: RETRIEVE_BLOGS_BY_ID,
         payload: id,
@@ -106,5 +109,19 @@ export const findBlogsByTitle = (title) => async (dispatch) => {
     } catch (err) {
       console.log(err);
     }
+
+};
+
+export const findBlogsByTag = (tag) => async (dispatch) => {
+  try {
+
+    const res = await BlogDataService.gettag(tag);
+    dispatch({
+      type: RETRIEVE_BLOGS_BY_TAG,
+      payload: tag,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
 };

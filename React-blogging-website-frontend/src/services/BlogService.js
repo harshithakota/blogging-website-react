@@ -1,11 +1,11 @@
 import http from "../http-common";
 
 const getAll = () => {
-  return http.get("/blog/blogs.json");
+  return http.get("/bloglist");
 };
 
 const get = id => {
-  return http.get(`/blogs/${id}`);
+  return http.get(`/blogdetail/${id}`);
 };
 
 const create = data => {
@@ -28,6 +28,10 @@ const findByTitle = title => {
   return http.get(`/blogs?title=${title}`);
 };
 
+const gettag = tag => {
+  return http.get(`/searchtag/${tag}`);
+};
+
 const BlogService = {
   getAll,
   get,
@@ -35,7 +39,8 @@ const BlogService = {
   update,
   remove,
   removeAll,
-  findByTitle
+  findByTitle,
+  gettag
 };
 
 export default BlogService;
