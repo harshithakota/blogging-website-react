@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import BlogDataService from "../services/BlogService";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Post from "./post.jsx"
+import Pagination from "./pagination.jsx"
+import ReactPaginate from 'react-paginate';
 
 
 function BlogList(props) {
@@ -58,6 +61,8 @@ function BlogList(props) {
 
 
 
+
+
    return (
      <div>
      <div class="sb-example-1">
@@ -73,24 +78,22 @@ function BlogList(props) {
 
       </div>
 
-     <div className="list-group">
-        {blogs &&
-          blogs.map((blog, index) => (
-            <div key={index}>
-              <div className="author">
-                Written by Claire
-              </div>
-              <div className="blog-title">
-                <b><Link to={`/blog-details/${blog._id}`}>
-                {blog.title}
-                </Link></b>
-              </div>
-              <div className="blog-date">
-                Oct 20
-              </div>
-            </div>
-          ))}
-      </div>
+      <div>
+       {blogs.length > 0 ? (
+         <>
+           <Pagination
+             data={blogs}
+             RenderComponent={Post}
+             title="Posts"
+             pageLimit={5}
+             dataLimit={10}
+           />
+         </>
+       ) : (
+        <h1>No Posts to display</h1>
+       )}
+     </div>
+
       </div>
    );
 
