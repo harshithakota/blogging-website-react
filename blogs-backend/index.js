@@ -14,21 +14,21 @@ mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
     console.log("DB connected")
 })
 
-
-
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String
 })
 
+const User = new mongoose.model("User", userSchema)
+
 const blogSchema = new mongoose.Schema({
     title: String,
     tag: String,
-    description: String
+    description: String,
+    author: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+    created_at: {type: Date, default: Date.now},
 })
-
-const User = new mongoose.model("User", userSchema)
 
 const Blog = new mongoose.model("Blog", blogSchema)
 
@@ -74,7 +74,10 @@ app.post("/register", (req, res)=> {
 
 app.post("/write", (req, res)=> {
   console.log(req.body)
-  const { title, tag, description} = req.body
+  const { title, tag, description,author} = req.body
+  const now = new Date();
+  console.log(now);
+  // .created_at = now;
   Blog.findOne({description: description}, (err, blog) => {
       if(blog){
           res.send({message: "Blog already posted"})
@@ -82,7 +85,8 @@ app.post("/write", (req, res)=> {
           const blog = new Blog({
               title,
               tag,
-              description
+              description,
+              author
           })
           blog.save(err => {
               if(err) {
@@ -96,8 +100,12 @@ app.post("/write", (req, res)=> {
 
 })
 
+//to retrieve all blogs
 app.get("/bloglist",(req,res) => {
-  Blog.find(function(err, blogs) {
+  Blog
+  .find()
+  .populate({path: 'author', model: 'User'})
+  .exec(function(err, blogs) {
     if (err) {
       return res.send(err);
     }
@@ -108,7 +116,10 @@ app.get("/bloglist",(req,res) => {
 
 app.get("/blogdetail/:id",(req,res) => {
 
-  Blog.find({'_id':req.params.id}).then((err,data)=>{
+  Blog
+  .find({'_id':req.params.id})
+  .populate({path: 'author', model: 'User'})
+  .then((err,data)=>{
     if (err) {
       return res.send(err);
     }
@@ -121,7 +132,10 @@ app.get("/blogdetail/:id",(req,res) => {
 app.get("/searchtag/:tag",(req,res) => {
   // const tag = req.body.tag
   // console.log(tag)
-  Blog.find({'tag':req.params.tag}).then((err,data)=>{
+  Blog
+  .find({'tag':req.params.tag})
+  .populate({path: 'author', model: 'User'})
+  .then((err,data)=>{
 
     if (err) {
       return res.send(err);

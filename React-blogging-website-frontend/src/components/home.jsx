@@ -2,7 +2,7 @@ import React from "react"
 import './home.css'
 import BlogList from "./blog-list.jsx"
 import { Link } from "react-router-dom";
-
+//homepage
 function Home(){
   return <div>
     <div  className="home" >

@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom"
 
 const Write = () => {
   const user = JSON.parse(localStorage.getItem("MyUser"))
+
   const history = useNavigate()
 
   const [ blog, setBlog] = useState({
       title: "",
       tag:"",
       description:"",
-      author:""
+      author: user._id
   })
 
   const handleChange = e => {
@@ -26,10 +27,10 @@ const Write = () => {
   const blogging = () => {
       const { title, tag, description,author } = blog
       console.log(author)
-      if( title && tag && description){
+      if( title && tag && description && author){
           axios.post("http://localhost:9002/write", blog)
           .then( res => {
-              alert(res.data.message)
+              // alert(res.data.message)
               history("/")
           })
       } else {

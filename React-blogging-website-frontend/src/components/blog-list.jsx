@@ -12,7 +12,7 @@ import ReactPaginate from 'react-paginate';
 function BlogList(props) {
 
   const [blogs, setBlogsList] = useState([]);
-
+//to get all the blogs we are using BlogDataService
   useEffect(() => {
 
     BlogDataService.getAll()
@@ -58,13 +58,8 @@ function BlogList(props) {
 
   }
 
-
-
-
-
-
    return (
-     <div>
+     <div class="containerr">
      <div class="sb-example-1">
 
          <div class="search">
@@ -86,7 +81,7 @@ function BlogList(props) {
              RenderComponent={Post}
              title="Posts"
              pageLimit={5}
-             dataLimit={10}
+             dataLimit={7}
            />
          </>
        ) : (

@@ -10,16 +10,20 @@ function Header({updateUser}){
   return <div>
     <header className="wrapper">
           <div className="left">
+          <Link to="/">
           <img style={{marginLeft: "40px"}} src="images/logo.png" alt="" />
+          </Link>
           </div>
           <div className="right">
             <div>
-            {user.name?
+
+            {user && user.name ?
               <div className="items">
               <div className="header-start" ><button style={{paddingBottom:'7px',paddingTop:'7px'}} className="button-start"><Link to="/write" style={{color:'inherit'}} >Get Started, {user.name}</Link></button></div>
               <div style={{paddingLeft:'30px'}}><div className="button" onClick={() => updateUser({})} >Logout</div></div></div>
-:<div className="items"><div className="header-sign"><Link to="register" style={{color:'inherit'}}>Sign in</Link></div>
-<div className="header-log"><Link to="login" style={{color:'inherit'}}>Log in</Link></div></div>
+:
+<div className="items"><div className="sign"><Link to="register" style={{color:'inherit'}}>Sign in</Link></div>
+<div className="log"><Link to="login" style={{color:'inherit'}}>Log in</Link></div></div>
  }
 
 

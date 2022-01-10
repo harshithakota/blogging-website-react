@@ -8,7 +8,7 @@ body {
 
 .home{
   background-color: #C4E2FF;
-  height:500px;
+  height:650px;
 }
 
 .line-home{
@@ -20,7 +20,7 @@ position: absolute;
 .main{
   font-size:60px;
   font-family:gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-  padding-top:50px;
+  padding-top:80px;
   margin-left:30px;
 }
 

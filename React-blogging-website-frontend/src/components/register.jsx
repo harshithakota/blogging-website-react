@@ -21,13 +21,13 @@ const Register = () => {
             [name]: value
         })
     }
-
+//api call to register
     const register = () => {
         const { name, email, password, reEnterPassword } = user
         if( name && email && password && (password === reEnterPassword)){
             axios.post("http://localhost:9002/register", user)
             .then( res => {
-                alert(res.data.message)
+                // alert(res.data.message)
                 history("/login")
             })
         } else {
@@ -38,7 +38,6 @@ const Register = () => {
 
     return (
         <div className="register">
-
             <h1>Register</h1>
             <input type="text" name="name" value={user.name} placeholder="Your Name" onChange={ handleChange }></input>
             <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange }></input>

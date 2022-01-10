@@ -3,6 +3,7 @@
 } */
 .submit-form{
   background-color:#C4E2FF;
+
 }
 
 .labels{
@@ -11,7 +12,7 @@
 }
 
 .blog > .button {
-    background: #1877f2;
+    background: black;
     border: 1px solid #1877f2;
     color: #fff;
     font-size: 1.25rem;

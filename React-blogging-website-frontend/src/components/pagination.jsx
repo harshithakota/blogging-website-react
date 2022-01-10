@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import './pagination.css';
 
 function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
   const [pages] = useState(Math.round(data.length / dataLimit));
@@ -35,7 +36,7 @@ function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
 
   return (
   <div>
-    <h1>{title}</h1>
+
 
     {/* show the posts, 10 posts at a time */}
     <div className="dataContainer">

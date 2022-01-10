@@ -19,11 +19,11 @@ const Login = ({updateUser}) => {
             [name]: value
         })
     }
-
+//api call
     const login = () => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
-            alert(res.data.message)
+            // alert(res.data.message)
             updateUser(res.data.user)
             // sessionStorage.setItem('UserName', res.data.user.name);
             history("/")

@@ -34,13 +34,36 @@ body {
   padding-left: 120px;
 
 }
-.header-sign{
-  padding-left: 250px;
+.sign{
+  padding-left: 290px;
   cursor:pointer;
+
+      background-color: rgba(25, 25, 25, 1);
+      border: none;
+      color: rgba(255, 255, 255, 1);;
+      padding: 7px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      margin: -6px 2px;
+      cursor: pointer;
+      border-radius: 16px;
+      margin-left:200px;
 }
-.header-log{
+.log{
   padding-left: 55px;
   float:right;
+  background-color: rgba(25, 25, 25, 1);
+  border: none;
+  color: rgba(255, 255, 255, 1);;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: -6px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-left:30px;
 }
 
 .button-start {
