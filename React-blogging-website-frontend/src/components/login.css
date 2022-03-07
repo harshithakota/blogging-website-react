@@ -33,3 +33,8 @@
     outline: none;
     cursor: pointer;
 }
+
+.error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+  }

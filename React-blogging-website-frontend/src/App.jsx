@@ -21,6 +21,7 @@ function App(){
   }, [])
 
   const updateUser = (user) => {
+    console.log(user)
     localStorage.setItem("MyUser", JSON.stringify(user))
     setLoginUser(user)
   }

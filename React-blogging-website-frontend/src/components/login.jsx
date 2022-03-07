@@ -12,6 +12,8 @@ const Login = ({updateUser}) => {
         password:""
     })
 
+  const [errorMessage, setErrorMessage] = useState('');
+
     const handleChange = e => {
         const { name, value } = e.target
         setUser({
@@ -24,14 +26,20 @@ const Login = ({updateUser}) => {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
             // alert(res.data.message)
+            console.log(res)
             updateUser(res.data.user)
-            // sessionStorage.setItem('UserName', res.data.user.name);
             history("/")
-        })
+        }).catch(err => {
+          setErrorMessage(err.response.data.message);
+          console.log(err.response.data.message);
+  });
     }
 
     return (
         <div className="login">
+        {errorMessage && (
+  <p className="error"> {errorMessage} </p>
+)}
             <h1>Login</h1>
             <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your Email"></input>
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>

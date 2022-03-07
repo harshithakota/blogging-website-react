@@ -1,11 +1,13 @@
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
+import morgan from "morgan"
 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
+app.use(morgan('tiny'))
 
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -89,13 +91,12 @@ app.post("/login", (req, res)=> {
             if(password === user.password ) {
                 res.status(200).send({message: "Login Successfull", user: user})
             } else {
-                res.status(200).send({ message: "Password didn't match"})
+                res.status(422).send({ message: "Password didn't match"})
             }
         } else {
-            res.status(200).send({message: "User not registered"})
+            res.status(422).send({message: "User not registered"})
         }
     })
-    res.status(200).send("User logged in");
 })
 
 /**
