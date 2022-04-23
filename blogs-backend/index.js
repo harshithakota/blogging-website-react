@@ -3,11 +3,18 @@ import cors from "cors"
 import mongoose from "mongoose"
 import morgan from "morgan"
 
+//Morgan Middleware
+// import accessLogStream from "../middlewares/morgan"
+
+// const { accessLogStream } = require("./middlewares/morgan");
+
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
-app.use(morgan('tiny'))
+// const { accessLogStream } = require("./middlewares/morgan");
+// app.use(morgan("combined", { stream: accessLogStream }));
+
 
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -21,7 +28,7 @@ const swaggerOptions = {
       title: "API",
       description: "Blogs API Information",
       contact: {
-        name: "Amazing Developer"
+        name: ""
       },
       servers: ["http://localhost:9002"]
     }
