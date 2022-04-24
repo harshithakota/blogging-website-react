@@ -62,9 +62,9 @@ function BlogList(props) {
      <div class="containerr">
      <div class="sb-example-1">
 
-         <div class="search">
+         <div className="search">
          <>
-        <input type="text" class="searchTerm" name="tag" value={tag_blog.tag} placeholder="What are you looking for?"  onChange={handleChange} />
+        <input type="text" className="searchTerm" name="tag" value={tag_blog.tag} placeholder="What are you looking for?"  onChange={handleChange} />
       <br />
       <button onClick={handleSubmit}>Search</button>
     </>

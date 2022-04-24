@@ -2,7 +2,9 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import morgan from "morgan"
-
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+import { config } from "dotenv"
 //Morgan Middleware
 // import accessLogStream from "../middlewares/morgan"
 
@@ -13,7 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 // const { accessLogStream } = require("./middlewares/morgan");
-// app.use(morgan("combined", { stream: accessLogStream }));
+//app.use(morgan("combined", { stream: accessLogStream }));
 
 
 import swaggerJsDoc from "swagger-jsdoc";
@@ -50,7 +52,8 @@ mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    password: String
+    password: String,
+    token: String
 })
 
 const User = new mongoose.model("User", userSchema)
@@ -91,11 +94,26 @@ const Blog = new mongoose.model("Blog", blogSchema)
  *        description: Successfully logged in
  */
 
-app.post("/login", (req, res)=> {
+app.post("/login", async(req, res)=> {
     const { email, password} = req.body
-    User.findOne({ email: email}, (err, user) => {
+    User.findOne({ email: email}, async(err, user) => {
         if(user){
-            if(password === user.password ) {
+          // console.log(password)
+          // console.log(user.password)
+          // console.log(bcrypt.compare(password, user.password))
+          // console.log(process.env.TOKEN_KEY)
+            if(await bcrypt.compare(password, user.password)) {
+                  const token = jwt.sign(
+                    { user_id: user._id, email },
+                      "abcdefsd",
+                      {
+                        expiresIn: "2h",
+                      }
+                  );
+
+      // save user token
+      user.token = token;
+      console.log(user)
                 res.status(200).send({message: "Login Successfull", user: user})
             } else {
                 res.status(422).send({ message: "Password didn't match"})
@@ -138,17 +156,21 @@ app.post("/login", (req, res)=> {
  *        description: Successfully registered
  */
 
-app.post("/register", (req, res)=> {
+app.post("/register", async(req, res)=> {
     const { name, email, password} = req.body
-    User.findOne({email: email}, (err, user) => {
+    User.findOne({email: email}, async (err, user) => {
         if(user){
             res.send({message: "User already registerd"})
         } else {
+          var encryptedPassword = await bcrypt.hash(password, 10);
             const user = new User({
                 name,
                 email,
-                password
+                password: encryptedPassword
             })
+            console.log(user)
+            console.log(password)
+            console.log(encryptedPassword)
             user.save(err => {
                 if(err) {
                     res.send(err)
@@ -318,6 +340,9 @@ app.get("/searchtag/:tag",(req,res) => {
 
 })
 
-app.listen(9002,() => {
-    console.log("BE started at port 9002")
-})
+// app.listen(9002,() => {
+//     console.log("BE started at port 9002")
+// })
+
+
+export default app;
