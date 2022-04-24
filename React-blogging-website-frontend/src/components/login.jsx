@@ -45,7 +45,7 @@ const Login = ({updateUser}) => {
             <input type="password" name="password" value={user.password} onChange={handleChange}  placeholder="Enter your Password" ></input>
             <div className="buton" onClick={login}>Login</div>
             <div>or</div>
-            <div className="buton" onClick={() => history("/register")}>Register</div>
+            <div className="buton" onClick={() => history("/signup")}>Register</div>
         </div>
     )
 }

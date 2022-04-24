@@ -12,7 +12,7 @@ const Write = () => {
       title: "",
       tag:"",
       description:"",
-      author: user._id
+      author: user?._id
   })
 
   const handleChange = e => {

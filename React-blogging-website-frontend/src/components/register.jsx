@@ -28,7 +28,7 @@ const Register = () => {
             axios.post("http://localhost:9002/register", user)
             .then( res => {
                 // alert(res.data.message)
-                history("/login")
+                history("/signin")
             })
         } else {
             alert("invlid input")
@@ -45,7 +45,7 @@ const Register = () => {
             <input type="password" name="reEnterPassword" value={user.reEnterPassword} placeholder="Re-enter Password" onChange={ handleChange }></input>
             <div className="buttonn" onClick={register} >Register</div>
             <div>or</div>
-            <div className="buttonn" onClick={() => history("/login")}>Login</div>
+            <div className="buttonn" onClick={() => history("/signin")}>Login</div>
         </div>
     )
 }

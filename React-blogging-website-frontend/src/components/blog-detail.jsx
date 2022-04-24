@@ -40,7 +40,7 @@ useEffect(() => {
                   {blogdetail.description}
                 </p>
               </div>
-              <h5 style={{paddingLeft:'20px',fontSize:'19px'}}>Written by {blogdetail.author.name}</h5>
+              <h5 style={{paddingLeft:'20px',fontSize:'19px'}}>Written by {blogdetail.author?.name}</h5>
             </article>
           </div>
 

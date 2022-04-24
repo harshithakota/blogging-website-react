@@ -4,16 +4,18 @@ import mongoose from "mongoose"
 import morgan from "morgan"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
+import path from "path"
 import { config } from "dotenv"
 //Morgan Middleware
 // import accessLogStream from "../middlewares/morgan"
 
 // const { accessLogStream } = require("./middlewares/morgan");
-
+const __dirname = path.resolve();
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
+app.use(express.static(path.join(__dirname + "/public")))
 // const { accessLogStream } = require("./middlewares/morgan");
 //app.use(morgan("combined", { stream: accessLogStream }));
 
@@ -42,12 +44,25 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
+// mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }, () => {
+//     console.log("DB connected")
+// })
+
+const username = "harshitha";
+const password = "harshitha";
+const cluster = "cluster0.wy0kc";
+const dbname = "myFirstDatabase";
+
+mongoose.connect(
+  `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`,
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-    console.log("DB connected")
-})
+  }
+);
 
 const userSchema = new mongoose.Schema({
     name: String,

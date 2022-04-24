@@ -9,7 +9,7 @@ function Post(props) {
   return (
     <div className="list-group">
     <div class="card">
-  <h5 class="card-header">Written by {author.name}</h5>
+  <h5 class="card-header">Written by {author?.name}</h5>
   <div class="card-body">
     <h5 class="card-title">{title}</h5>
     <p class="card-text">{ description.length < 80 ? description : description.substring(0, 80)+".." }</p>

@@ -31,9 +31,9 @@ function App(){
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="blog-details/:id" element={<BlogDetail />} />
-      <Route path="write" element={<Write />} />
-      <Route path="register" element={<Register />} />
-      <Route path="login" element={<Login updateUser={updateUser}/>} />
+      <Route path="blog-write" element={<Write />} />
+      <Route path="signup" element={<Register />} />
+      <Route path="signin" element={<Login updateUser={updateUser}/>} />
     </Routes>
 
   </div>

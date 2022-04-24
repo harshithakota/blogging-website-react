@@ -22,8 +22,8 @@ function Header({updateUser}){
               <div className="header-start" ><button style={{paddingBottom:'7px',paddingTop:'7px'}} className="button-start"><Link to="/write" style={{color:'inherit'}} >Get Started, {user.name}</Link></button></div>
               <div style={{paddingLeft:'30px'}}><div className="button" onClick={() => updateUser({})} >Logout</div></div></div>
 :
-<div className="items"><div className="sign"><Link to="register" style={{color:'inherit'}}>Sign in</Link></div>
-<div className="log"><Link to="login" style={{color:'inherit'}}>Log in</Link></div></div>
+<div className="items"><div className="sign"><Link to="signup" style={{color:'inherit'}}>Sign in</Link></div>
+<div className="log"><Link to="signin" style={{color:'inherit'}}>Log in</Link></div></div>
  }
 
 
