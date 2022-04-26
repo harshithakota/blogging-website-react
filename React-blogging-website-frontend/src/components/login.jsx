@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import "./login.css"
-import axios from "axios"
+import axios from '../http-common'
 import { useNavigate } from "react-router-dom"
 
 const Login = ({updateUser}) => {
@@ -23,7 +23,7 @@ const Login = ({updateUser}) => {
     }
 //api call
     const login = () => {
-        axios.post("http://localhost:9002/login", user)
+        axios.post("/login", user)
         .then(res => {
             // alert(res.data.message)
             console.log(res)

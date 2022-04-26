@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: ./blogs-backend
+      dockerfile: Dockerfile
+    image: articleavenue-server-dc
+    container_name: articleavenue-node-server-dc
+    command: npm run start
+    ports:
+      - "9002:9002"
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./React-blogging-website-frontend
+      dockerfile: Dockerfile
+    image: articleavenue-client-dc
+    container_name: articleavenue-node-client-dc
+    command: npm run start
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+    app-network:
+        driver: bridge

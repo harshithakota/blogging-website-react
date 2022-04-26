@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./register.css"
-import axios from "axios"
+import axios from '../http-common'
 import { useNavigate } from "react-router-dom"
 
 const Register = () => {
@@ -25,7 +25,7 @@ const Register = () => {
     const register = () => {
         const { name, email, password, reEnterPassword } = user
         if( name && email && password && (password === reEnterPassword)){
-            axios.post("http://localhost:9002/register", user)
+            axios.post("/register", user)
             .then( res => {
                 // alert(res.data.message)
                 history("/signin")

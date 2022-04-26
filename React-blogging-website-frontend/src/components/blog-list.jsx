@@ -3,7 +3,7 @@ import './blog-list.css';
 import { Link } from "react-router-dom";
 import BlogDataService from "../services/BlogService";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from '../http-common'
 import Post from "./post.jsx"
 import Pagination from "./pagination.jsx"
 import ReactPaginate from 'react-paginate';
@@ -46,7 +46,7 @@ function BlogList(props) {
       const {tag} = tag_blog
       if( tag){
         console.log(tag)
-          axios.get(`http://localhost:9002/searchtag/${tag}`)
+          axios.get(`/searchtag/${tag}`)
           .then( res => {
             setBlogsList(res.data);
               console.log(res.data)

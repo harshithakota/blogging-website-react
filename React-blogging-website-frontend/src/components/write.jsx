@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import './write.css';
-import axios from "axios"
+import axios from '../http-common'
 import { useNavigate } from "react-router-dom"
 
 const Write = () => {
@@ -28,7 +28,7 @@ const Write = () => {
       const { title, tag, description,author } = blog
       console.log(author)
       if( title && tag && description && author){
-          axios.post("http://localhost:9002/write", blog)
+          axios.post("/write", blog)
           .then( res => {
               // alert(res.data.message)
               history("/")
